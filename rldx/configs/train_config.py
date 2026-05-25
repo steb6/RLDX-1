@@ -64,6 +64,16 @@ class TrainConfig:
     dataloader and MSAT both rely on this width, so a mismatch is caught at
     assembly time rather than during forward."""
 
+    max_state_dim: int = 64
+    """Maximum padded state dimension expected by the processor and action model.
+    Fine-tuning datasets with flat proprioception larger than the pretrain default
+    must override this so the processor does not attempt negative-width padding."""
+
+    max_action_dim: int = 64
+    """Maximum padded action dimension expected by the processor and action model.
+    Fine-tuning datasets with smaller or larger flat action vectors can override
+    this to keep processor and model padding widths aligned."""
+
     # ----------------------------------------------------------------------------------------------
 
     # Dataset config -------------------------------------------------------------------------------

@@ -105,6 +105,27 @@ Hands-on guides live under [`docs/`](docs/):
 | [`evaluation.md`](docs/evaluation.md) | RoboCasa / LIBERO / SIMPLER / GR-1 eval, server + rollout split, results aggregation |
 | [`inference_server.md`](docs/inference_server.md) | `run_rldx_server.py` CLI, wire protocol, RTC modes, `--compile` levels, simulator + real-robot deployment |
 
+### RoboCasa MimicGen Pipeline
+
+This fork keeps a minimal RoboCasa pipeline under [`analysis/robocasa_pipeline`](analysis/robocasa_pipeline):
+- stage a single-task LeRobot dataset
+- generate new episodes with MimicGen
+- convert `demo.hdf5` to a RoboCasa-native LeRobot dataset
+- fine-tune RLDX on that dataset
+- run a controlled same-demo evaluation in the exact training scene
+
+Quick entrypoints:
+
+```bash
+python analysis/robocasa_pipeline/export_training_task.py --help
+python analysis/robocasa_pipeline/generate_mimicgen_dataset.py --help
+python analysis/robocasa_pipeline/mimicgen_to_lerobot.py --help
+bash analysis/robocasa_pipeline/train_rldx_robocasa.sh
+bash analysis/robocasa_pipeline/eval_rldx_same_demo.sh /path/to/checkpoint /path/to/demo.hdf5
+```
+
+See [`analysis/robocasa_pipeline/README.md`](analysis/robocasa_pipeline/README.md) for the full runbook.
+
 
 ---
 

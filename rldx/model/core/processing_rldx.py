@@ -757,6 +757,8 @@ class RLDXProcessor(BaseProcessor):
                 "physics_keys",
                 "physics_dims",
                 "allow_missing_physics",
+                "max_state_dim",
+                "max_action_dim",
                 "max_action_horizon",
                 # ``setup.py`` passes these as kwargs to
                 # AutoProcessor.from_pretrained when the CLI specifies a

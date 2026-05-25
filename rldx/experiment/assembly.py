@@ -193,6 +193,8 @@ def _apply_cli_model_overrides(
     _print(f"[i] n_cog_tokens: {cli.n_cog_tokens}")
     run_config.model.action_horizon = cli.action_horizon
     _print(f"[i] action_horizon: {cli.action_horizon}")
+    run_config.model.max_state_dim = cli.max_state_dim
+    run_config.model.max_action_dim = cli.max_action_dim
 
     # Plumb CLI fields onto run_config.model.
     #   * backbone_select_layer: opt-in override (None keeps the ckpt-loaded
